@@ -12,8 +12,33 @@
      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
  }
  body {
+   text-align:center;
    min-height: 100vh;
+   font-family:Verdana, Geneva, sans-serif;
+   font-size:18px;
  }
+ 
+ .float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#4C6861;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
+}
+
+.my-float > img {
+  justify-content: center;
+  align-items: center;
+}
  .page {
    min-height: 100vh;
    position: absolute;
@@ -40,25 +65,33 @@
  #add.hasPhoto .photo-form {
    display: block;
  }
+ #add.hasPhoto .float {
+   display: none;
+ }
+ #add.hasPhoto .photo_instr {
+   display: none;
+ }
  
  .page header {
    display: grid;
    grid-template-columns: 1fr 3fr 1fr;
    grid-template-areas: "btn-left title btn-right";
-   height: 2.5rem;
+   height: 3rem;
    background-color: #4C6861;
    box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.64);
  }
 
 header img {
-  float: left;
-  width: 48px;
-  height: 48px;
+  width: 30px;
+  height: 30px;
+  grid-area: title;
+  margin-top: 1rem;
 }
  .page header h1 {
    font-weight: 300;
+   margin-top: 1rem;
    font-size: 1rem;
-   color: #333;
+   color: black;
    text-align: center;
    grid-area: title;
  }
@@ -95,3 +128,69 @@ header img {
  .star.checked::before {
    content: '\2605';
  }
+
+ .my_photo{
+   width: 100%;
+   height: auto;
+   margin-left:-4rem;
+ }
+ 
+ figure{
+   width: 100vw;
+   height:auto;
+ }
+
+ figcaption{
+   margin-left:-4rem;
+ }
+
+ .js_buttons{
+  margin-right: 1rem;
+  margin-left: 1rem;
+  background: #104263;
+  border-radius: 60px;
+  color: #ffffff;
+  padding: 6px 7px 7px 9px;
+  text-decoration: none;
+ }
+ .js_buttons:active{
+  background: lightskyblue;
+  top: 1px;
+ }
+
+ #btnSave{
+  background: #104263;
+  border-radius: 60px;
+  color: #ffffff;
+  padding: 6px 7px 7px 9px;
+  text-decoration: none;
+ }
+ .btnSave:active{
+  background: royalblue;
+  top: 1px;
+ }
+ #btnTakePhoto{
+  margin-right: 1rem;
+  margin-left: 1rem;
+  background: #104263;
+  border-radius: 60px;
+  color: #ffffff;
+  padding: 6px 7px 7px 9px;
+  text-decoration: none; 
+ }
+ #btnTakePhoto:active{
+  background: lightskyblue;
+  top: 1px; 
+ }
+#btnBackHome{
+  margin-left: 1rem;
+  background: #104263;
+  border-radius: 60px;
+  color: #ffffff;
+  padding: 6px 7px 7px 9px;
+  text-decoration: none; 
+}
+#btnBackHome:active{
+  background: lightskyblue;
+  top: 1px; 
+}

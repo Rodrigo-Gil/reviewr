@@ -22,13 +22,12 @@ const app = {
     },
     getReviews: () => {
       //getting reviews from localStorage
-      if (localStorage.getItem(app.KEY)) {
-        console.log(localStorage);
+      if (localStorage.getItem(app.KEY)){
         let str = localStorage.getItem(app.KEY);
         app.reviews = JSON.parse(str);
         //calling the functions to set elements on the page
         app.reviewList();
-    };
+      };
   },
     setReviews: () => {
       //this is responsible for saving new reviews
@@ -43,6 +42,7 @@ const app = {
       newReview.rating = rating;
       newReview.img = img;
       //pushing the newly created object into the reviews array
+      if(title){
       app.reviews.push(newReview);
       //saving the updated array into the localStorage
       window.localStorage.setItem(app.KEY, JSON.stringify(app.reviews));
@@ -56,14 +56,17 @@ const app = {
         document.querySelector(".page.active").classList.remove("active");
         document.querySelector("#home").classList.add("active");
       },);
+    } else {
+      alert("Please insert a name, before saving!")
+    }
     },
     addListeners: () => {
       //from home to details
       document.getElementById("btnAdd").addEventListener("click", app.nav);
-      //from home to add
-      document.getElementById("btnDetailsBack").addEventListener("click", app.nav);
       //from add to home
       document.getElementById("btnAddBack").addEventListener("click", app.nav);
+      //from photoAdd to home
+      document.getElementById("btnBackHome").addEventListener("click", app.nav);
       //setting up the camera on the app
       document.getElementById("btnTakePhoto").addEventListener('click', app.takePhoto);
       //adding a listener on the save button to set and save review
@@ -76,6 +79,10 @@ const app = {
       console.log("Navigate to", target);
       document.querySelector(".page.active").classList.remove("active");
       document.getElementById(target).classList.add("active");
+      //removing the photo on the add review page if a photo has already been taken.
+      if (document.querySelector("#add").classList.toggle("hasPhoto")){
+        document.querySelector("#add").classList.remove("hasPhoto");
+      }
     },
     takePhoto: () => {
       let options = {
@@ -189,22 +196,33 @@ const app = {
             let imgTitle = document.createElement("figcaption");
             let rating = document.createElement('p');
             let deleteBtn = document.createElement("button");
+            let backBtn = document.createElement("button");
             //adding properties inside the elements
             imgItem.src = item.img;
             imgTitle.textContent = "Item: " + item.title;
             rating.textContent = "Rating: " + item.rating;
-            deleteBtn.textContent= "delete review";
+            deleteBtn.textContent= "delete";
+            backBtn.textContent = "Cancel";
+           
+            //adding classes to the elements
+            imgItem.classList.add("my_photo");
+            divItem.classList.add("details_container");
+            deleteBtn.classList.add("js_buttons");
+            backBtn.classList.add("js_buttons");
+            backBtn.setAttribute('data-target', 'home');
             //appending the elements inside the div
             figure.append(imgItem);
             figure.append(imgTitle);
             divItem.append(figure);
             divItem.append(rating);
             divItem.append(deleteBtn);
+            divItem.append(backBtn);
             //appending all elements inside the page
             main.append(divItem);
             details.append(main);
             //Delete Button Event
-            deleteBtn.addEventListener('click', app.deleteReview)   
+            deleteBtn.addEventListener('click', app.deleteReview);
+            backBtn.addEventListener('click', app.nav)
           }});
         }
     },

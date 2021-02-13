@@ -38,9 +38,11 @@
   <body>
     <section class="page active" id="home">
       <header>
+        <a href="#" class="float">
+          <i class="my-float"><img id="btnAdd" data-target="add" src="./img/add-black-24dp.svg"></i>
+          </a>
         <img src = "./img/reviewr_logo1.png" alt="logo" />
         <h1>Rodrigo's Reviewr</h1>
-        <button id="btnAdd" data-target="add">+ Add</button>
       </header>
       <main>
         <p class="reviews">There are currently no reviews available. Please click on the +ADD button to add your first review.</p>
@@ -50,32 +52,37 @@
     </section>
     <section class="page" id="details">
       <header>
-        <button id="btnDetailsBack" data-target="home">&lt; Back</button>
-        <h1>Details</h1>
+        <img src = "./img/reviewr_logo1.png" alt="logo" />
+        <h1>Reviewr Details</h1>
       </header>
       <main>
+        <button id="btnDetailsBack" data-target="home">&lt; Back to Home</button>
         <p><img src="" alt="" id="imgDetails" /></p>
         <p>Item Name</p>
-        <p><span>5</span>/5</p>
-        <p><button id="btnDelete">Delete</button></p>
       </main>
     </section>
     <section class="page" id="add">
       <header>
-        <button id="btnAddBack" data-target="home">&lt; Back</button>
-        <h1>Add new Review</h1>
+        <a href="#" class="float">
+          <i class="my-float"><img id="btnAddBack" data-target="home" src="./img/arrow_back-24px.svg"></i>
+          </a>
+          <img src = "./img/reviewr_logo1.png" alt="logo" />
+        <h1>Reviewr Photo</h1>
       </header>
       <main>
+        <p class= "photo_instr"> Please click on the button below to take a photo. Click on the back
+          button to come back to the previous page.
+        </p>
         <div class="photo-button">
           <button id="btnTakePhoto">
-            ICON
+            Take photo
           </button>
         </div>
         <div class="photo-form">
           <p><img src="" alt="image" id="photo" /></p>
           <p>
             <label for="name">
-              <input type="text" id="name" placeholder="Item Name"
+              <input type="text" id="name" placeholder="Item Name" required
             /></label>
           </p>
           <p>Rate your photo
@@ -89,7 +96,8 @@
                 </div>
             </label>
           </p>
-          <p><button id="btnSave" data-target="home">&lt; Save Review</button></p>
+          <button id="btnSave" data-target="home">Save Review</button>
+          <button id="btnBackHome" data-target="home">Cancel</button>
         </div>
       </main>
     </section>
